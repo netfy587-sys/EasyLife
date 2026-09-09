@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The World of Sport — A Complete Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#14301F;
+    --pine-dark:#0D2216;
+    --paper:#FAF6EC;
+    --linen:#EEE6CE;
+    --track:#C1432B;
+    --gold:#C99A3E;
+    --ink:#22201B;
+    --ink-soft:#4A463C;
+    --line:#D8CFAE;
+    --white:#FFFDF7;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Lora", serif;
+    line-height:1.75;
+    font-size:17px;
+  }
+  h1,h2,h3,.display{
+    font-family:"Baloo 2", sans-serif;
+    color:var(--pine);
+    margin:0;
+    line-height:1.15;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  p{margin:0 0 1em 0;max-width:64ch;color:var(--ink-soft);}
+  :focus-visible{outline:3px solid var(--track);outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+
+  /* ---------- layout helpers ---------- */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(28px,4vw,40px);font-weight:700;}
+  .kicker{
+    color:var(--track);
+    font-family:"Baloo 2", sans-serif;
+    font-weight:600;
+    font-size:15px;
+    margin-bottom:10px;
+    display:block;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--pine);
+    color:var(--paper);
+    overflow:hidden;
+    padding:100px 0 70px;
+  }
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:center;}
+  .hero h1{
+    color:var(--white);
+    font-size:clamp(40px,6vw,66px);
+    font-weight:800;
+    letter-spacing:-0.5px;
+  }
+  .hero h1 span{color:var(--gold);}
+  .hero p.lede{
+    color:#D8E6DA;
+    font-family:"Lora", serif;
+    font-size:19px;
+    max-width:52ch;
+    margin-top:22px;
+  }
+  .lane-lines{position:absolute;inset:0;z-index:1;opacity:0.35;}
+  .hero-badge{
+    background:var(--pine-dark);
+    border:1px solid #2C5A3D;
+    border-radius:14px;
+    padding:26px;
+  }
+  .hero-badge .rings{margin:0 auto 14px;}
+  .hero-badge p{color:#CFE0D2;font-size:15px;text-align:center;margin:0;}
+
+  /* ---------- intro strip ---------- */
+  .intro{padding:56px 0;border-bottom:1px solid var(--line);}
+  .intro .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;}
+  .intro-item h3{font-size:17px;font-family:"Baloo 2";color:var(--pine);margin-bottom:8px;}
+  .intro-item p{font-size:15.5px;margin:0;}
+
+  /* ---------- categories ---------- */
+  .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:1px solid var(--line);}
+  .cat-card{background:var(--paper);padding:34px 30px;}
+  .cat-card .icon{width:44px;height:44px;color:var(--track);margin-bottom:18px;}
+  .cat-card h3{font-size:20px;margin-bottom:10px;}
+  .cat-card p{font-size:15.5px;margin:0;}
+
+  /* ---------- major sports (scorecard list) ---------- */
+  .sport-row{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:30px;
+    padding:34px 28px;
+    border-bottom:1px solid var(--line);
+    align-items:start;
+  }
+  .sport-row:nth-child(odd){background:var(--linen);}
+  .sport-row .icon-box{
+    width:72px;height:72px;
+    border-radius:50%;
+    background:var(--pine);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sport-row .icon-box svg{width:36px;height:36px;color:var(--gold);}
+  .sport-row h3{font-size:23px;margin-bottom:6px;}
+  .sport-meta{font-family:"Baloo 2";font-size:13.5px;color:var(--track);font-weight:600;margin-bottom:10px;}
+  .sport-row p{font-size:16px;}
+
+  /* ---------- olympics timeline ---------- */
+  .timeline{position:relative;margin-top:20px;padding-left:36px;border-left:3px solid var(--gold);}
+  .t-item{position:relative;padding-bottom:44px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:"";
+    position:absolute;left:-45px;top:4px;
+    width:15px;height:15px;border-radius:50%;
+    background:var(--track);border:3px solid var(--paper);
+    box-shadow:0 0 0 2px var(--gold);
+  }
+  .t-year{font-family:"Baloo 2";color:var(--track);font-weight:700;font-size:19px;display:block;margin-bottom:4px;}
+  .t-item h4{font-family:"Baloo 2";font-size:18px;color:var(--pine);margin:0 0 6px 0;}
+  .t-item p{font-size:15.5px;margin:0;}
+
+  /* rings graphic */
+  .rings-row{display:flex;gap:6px;margin:34px 0 6px;}
+  .rings-row svg{width:34px;height:34px;}
+
+  /* ---------- benefits ---------- */
+  .benefits-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);}
+  .benefit-col{padding:40px 36px;}
+  .benefit-col + .benefit-col{border-left:1px solid var(--line);}
+  .benefit-col h3{font-size:21px;margin-bottom:18px;}
+  .benefit-col ul{margin:0;padding:0;list-style:none;}
+  .benefit-col li{
+    padding:12px 0;
+    border-bottom:1px dashed var(--line);
+    font-size:16px;
+    color:var(--ink-soft);
+    display:flex;gap:12px;
+  }
+  .benefit-col li:last-child{border-bottom:none;}
+  .benefit-col li svg{width:18px;height:18px;flex-shrink:0;margin-top:4px;color:var(--track);}
+
+  /* ---------- players ---------- */
+  .player-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+  .player-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:26px 28px;
+  }
+  .player-card .tag{
+    font-family:"Baloo 2";font-size:12.5px;font-weight:600;
+    color:var(--pine);background:var(--linen);
+    display:inline-block;padding:4px 12px;border-radius:20px;
+    margin-bottom:12px;
+  }
+  .player-card h4{font-family:"Baloo 2";font-size:19px;color:var(--pine);margin:0 0 8px 0;}
+  .player-card p{font-size:15.5px;margin:0;}
+
+  /* ---------- facts ---------- */
+  .facts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .fact-card{
+    background:var(--pine);
+    color:var(--paper);
+    border-radius:10px;
+    padding:24px 20px;
+    min-height:150px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+  }
+  .fact-card:nth-child(2n){background:var(--track);}
+  .fact-card:nth-child(3n){background:#3A2E1C;}
+  .fact-card p{color:inherit;font-size:14.5px;margin:0;opacity:0.95;}
+
+  /* ---------- glossary ---------- */
+  .glossary{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line);}
+  .g-item{padding:18px 0;border-bottom:1px solid var(--line);padding-right:30px;}
+  .g-item dt{font-family:"Baloo 2";font-size:15.5px;color:var(--pine);font-weight:600;}
+  .g-item dd{margin:4px 0 0 0;font-size:15px;color:var(--ink-soft);}
+
+  footer{
+    background:var(--pine-dark);
+    color:#B9C9BC;
+    padding:50px 0 34px;
+    font-size:14.5px;
+  }
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;}
+  footer .brand{color:var(--white);font-family:"Baloo 2";font-size:17px;}
+
+  @media (max-width: 860px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .intro .wrap{grid-template-columns:1fr;}
+    .cat-grid{grid-template-columns:1fr;}
+    .sport-row{grid-template-columns:64px 1fr;padding:26px 20px;}
+    .sport-row .icon-box{width:56px;height:56px;}
+    .benefits-wrap{grid-template-columns:1fr;}
+    .benefit-col + .benefit-col{border-left:none;border-top:1px solid var(--line);}
+    .player-grid{grid-template-columns:1fr;}
+    .facts-grid{grid-template-columns:1fr 1fr;}
+    .glossary{grid-template-columns:1fr;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg class="lane-lines" viewBox="0 0 1200 500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M-50 480 Q 400 380 900 460 T 1250 420" stroke="#2C5A3D" stroke-width="60" fill="none"/>
+    <path d="M-50 400 Q 400 300 900 380 T 1250 340" stroke="#25502F" stroke-width="40" fill="none"/>
+    <path d="M-50 320 Q 400 220 900 300 T 1250 260" stroke="#1C4227" stroke-width="26" fill="none"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <h1>The world of sport,<br><span>fully explained</span></h1>
+      <p class="lede">From cricket to kabaddi, from the ancient roots of the Olympics to the athletes who carried a nation's hopes — here's everything worth knowing about the games we play.</p>
+    </div>
+    <div class="hero-badge">
+      <div class="rings" style="display:flex;justify-content:center;gap:6px;">
+        <svg viewBox="0 0 40 40" width="34" height="34"><circle cx="20" cy="20" r="15" fill="none" stroke="#2E7D46" stroke-width="5"/></svg>
+        <svg viewBox="0 0 40 40" width="34" height="34"><circle cx="20" cy="20" r="15" fill="none" stroke="#C99A3E" stroke-width="5"/></svg>
+        <svg viewBox="0 0 40 40" width="34" height="34"><circle cx="20" cy="20" r="15" fill="none" stroke="#C1432B" stroke-width="5"/></svg>
+      </div>
+      <p>From an ancient sense of fair play to the modern stadium, sport has always brought people together.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ================= INTRO STRIP ================= -->
+<section class="intro">
+  <div class="wrap">
+    <div class="intro-item">
+      <h3>What's on this page</h3>
+      <p>Types of sport, rules, history, benefits, and profiles of celebrated athletes — all in one place, with nothing being sold to you.</p>
+    </div>
+    <div class="intro-item">
+      <h3>Who it's for</h3>
+      <p>Students, sports fans, or anyone simply curious enough to want a deeper look at how these games came to be.</p>
+    </div>
+    <div class="intro-item">
+      <h3>How to read it</h3>
+      <p>Work top to bottom — types of sport first, then the major games, the Olympic story, and the facts at the very end.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CATEGORIES ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Starting point</span>
+      <h2>The main categories of sport</h2>
+      <p>The easiest way to make sense of sport is by how it's structured. Each category asks something different of the people who play it.</p>
+    </div>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <svg class="icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <circle cx="20" cy="44" r="8"/><circle cx="44" cy="44" r="8"/><circle cx="32" cy="20" r="8"/>
+        <path d="M20 36 L28 24 M44 36 L36 24"/>
+      </svg>
+      <h3>Team sports</h3>
+      <p>Cricket, football, hockey, kabaddi, and basketball all depend on a whole team moving together. Strategy and cooperation matter as much as individual skill.</p>
+    </div>
+    <div class="cat-card">
+      <svg class="icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <circle cx="32" cy="24" r="10"/><path d="M32 34 L32 52 M20 44 L44 44"/>
+      </svg>
+      <h3>Individual sports</h3>
+      <p>Badminton, tennis, wrestling, swimming, and athletics come down entirely to one person's preparation, technique, and mental toughness on the day.</p>
+    </div>
+    <div class="cat-card">
+      <svg class="icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <path d="M10 44 Q32 14 54 44" /><path d="M10 44 L54 44"/>
+        <circle cx="32" cy="34" r="4" fill="currentColor" stroke="none"/>
+      </svg>
+      <h3>Indoor & adventure sports</h3>
+      <p>Chess, carrom, and table tennis test the mind indoors, while rock climbing and rowing test the body and nerve out in the open.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAJOR SPORTS ================= -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">A closer look</span>
+      <h2>The major sports of the world</h2>
+      <p>Every sport carries its own story — where it began, how it's played, and where it stands today.</p>
+    </div>
+  </div>
+
+  <div class="sport-row wrap" style="max-width:1080px;margin:0 auto;">
+    <div class="icon-box">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <circle cx="24" cy="40" r="6"/><path d="M28 36 L48 16 M44 12 L52 20"/>
+      </svg>
+    </div>
+    <div>
+      <span class="sport-meta">Team sport · bat and ball</span>
+      <h3>Cricket</h3>
+      <p>Cricket, believed to have its roots in 16th-century England, is India's most followed sport. Each team fields 11 players, and the game is played in three main formats — Test (5 days), One Day International (50 overs), and T20 (20 overs). The side that balances batting, bowling, and fielding best usually comes out on top. India has won the World Cup in 1983, 2007, and 2011.</p>
+    </div>
+  </div>
+
+  <div class="sport-row wrap" style="max-width:1080px;margin:0 auto;">
+    <div class="icon-box">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3">
+        <circle cx="32" cy="32" r="20"/>
+        <path d="M32 18 L38 26 L34 34 L30 34 L26 26 Z" stroke-linejoin="round"/>
+        <path d="M32 12 L32 18 M14 32 L20 32 M44 32 L50 32"/>
+      </svg>
+    </div>
+    <div>
+      <span class="sport-meta">Team sport · the world's most-watched game</span>
+      <h3>Football</h3>
+      <p>No sport is watched or played more widely than football. Each team has 11 players, and a match runs 90 minutes across two halves; the goal is to get the ball into the opponent's net. Held every four years, the FIFA World Cup is widely regarded as the single biggest event in sport.</p>
+    </div>
+  </div>
+
+  <div class="sport-row wrap" style="max-width:1080px;margin:0 auto;">
+    <div class="icon-box">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <path d="M16 48 L44 16"/><path d="M44 16 L50 10 L54 14 L48 20 Z" stroke-linejoin="round"/>
+        <circle cx="18" cy="46" r="4"/>
+      </svg>
+    </div>
+    <div>
+      <span class="sport-meta">Team sport · India's traditional national game</span>
+      <h3>Hockey</h3>
+      <p>India once ruled this sport at the Olympics, winning six straight gold medals between 1928 and 1956. Each side fields 11 players who control the ball with a curved stick. Major Dhyan Chand's stick-work was so exceptional that he became known as "The Wizard of Hockey."</p>
+    </div>
+  </div>
+
+  <div class="sport-row wrap" style="max-width:1080px;margin:0 auto;">
+    <div class="icon-box">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <path d="M20 44 L44 20"/><ellipse cx="47" cy="17" rx="6" ry="9" transform="rotate(45 47 17)"/>
+        <path d="M18 46 L12 52"/>
+      </svg>
+    </div>
+    <div>
+      <span class="sport-meta">Individual / doubles · racket sport</span>
+      <h3>Badminton</h3>
+      <p>A fast-paced racket sport played singles or doubles, where points are won by sending the shuttlecock over the net and out of reach. Each game runs to 21 points. Players like P. V. Sindhu, Saina Nehwal, and Lakshya Sen have put India firmly on the world stage in this sport.</p>
+    </div>
+  </div>
+
+  <div class="sport-row wrap" style="max-width:1080px;margin:0 auto;">
+    <div class="icon-box">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <rect x="12" y="24" width="40" height="20" rx="2"/>
+        <path d="M22 24 L22 44 M32 24 L32 44 M42 24 L42 44"/>
+      </svg>
+    </div>
+    <div>
+      <span class="sport-meta">Team sport · a homegrown Indian tradition</span>
+      <h3>Kabaddi</h3>
+      <p>A sport born entirely out of Indian soil, played without any equipment at all. A "raider" holds their breath, crosses into the opponent's half to tag defenders, and races back to their own side before running out of air. The Pro Kabaddi League has given this ancient game a whole new life on television.</p>
+    </div>
+  </div>
+
+  <div class="sport-row wrap" style="max-width:1080px;margin:0 auto;">
+    <div class="icon-box">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <path d="M10 50 Q32 10 54 50" />
+        <path d="M10 50 L54 50"/>
+        <path d="M20 50 L20 40 M32 50 L32 34 M44 50 L44 40"/>
+      </svg>
+    </div>
+    <div>
+      <span class="sport-meta">Individual sport · track and field</span>
+      <h3>Athletics</h3>
+      <p>The umbrella term for running, jumping, and throwing events, often considered the oldest branch of organised sport. It spans everything from the 100-metre sprint to the marathon, long jump, high jump, and javelin throw. Neeraj Chopra won India's first Olympic gold in athletics with the javelin at the 2020 Tokyo Games.</p>
+    </div>
+  </div>
+
+  <div class="sport-row wrap" style="max-width:1080px;margin:0 auto;border-bottom:none;">
+    <div class="icon-box">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+        <path d="M8 40 Q16 34 24 40 T40 40 T56 40"/>
+        <path d="M8 48 Q16 42 24 48 T40 48 T56 48"/>
+        <circle cx="20" cy="24" r="5"/>
+        <path d="M20 29 L20 36 M14 34 L26 34"/>
+      </svg>
+    </div>
+    <div>
+      <span class="sport-meta">Individual sport · water sport</span>
+      <h3>Swimming</h3>
+      <p>Often called one of the most complete forms of exercise, since it engages nearly every muscle in the body. Freestyle, backstroke, breaststroke, and butterfly are the four main strokes. At the Olympics, swimming hands out more medals than almost any other sport.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OLYMPICS ================= -->
+<section style="background:var(--linen);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The biggest stage in sport</span>
+      <h2>The story of the Olympic Games</h2>
+      <p>What began on a small field in ancient Greece has grown into the largest sporting event on Earth.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="t-item">
+        <span class="t-year">776 BC</span>
+        <h4>The ancient Olympics begin</h4>
+        <p>The first recorded Olympic Games were held in Olympia, Greece, in honour of the god Zeus. Early editions consisted of little more than a single footrace.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-year">1896</span>
+        <h4>The modern Olympics are reborn</h4>
+        <p>Thanks to the efforts of French educator Pierre de Coubertin, the first modern Olympics were held in Athens, Greece, drawing roughly 241 athletes from 14 nations.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-year">1900</span>
+        <h4>Women compete for the first time</h4>
+        <p>At the Paris Olympics, women took part for the first time, competing in events such as tennis and golf.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-year">1924</span>
+        <h4>The Winter Olympics begin</h4>
+        <p>The first Winter Olympics were held in Chamonix, France, featuring snow and ice events such as skiing and skating.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-year">1928</span>
+        <h4>India's golden era begins</h4>
+        <p>The Indian hockey team won its first Olympic gold medal at the Amsterdam Games, launching a period of dominance in the sport that lasted for decades.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-year">Today</span>
+        <h4>A gathering of more than 200 nations</h4>
+        <p>Today, more than 200 countries take part in the Olympics across over 300 events. The five interlocking rings represent the unity of five continents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BENEFITS ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">More than just a game</span>
+      <h2>Why playing sport matters</h2>
+      <p>Playing sport regularly is widely understood to benefit both the body and the mind.</p>
+    </div>
+    <div class="benefits-wrap">
+      <div class="benefit-col">
+        <h3>Physical benefits</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Strengthens the heart and lungs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Builds stronger muscles and bones</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Helps keep body weight in a healthy range</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Improves the body's immune response</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Leads to better quality sleep</li>
+        </ul>
+      </div>
+      <div class="benefit-col">
+        <h3>Mental & social benefits</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Reduces stress and anxiety</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Builds confidence and discipline</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Develops teamwork and leadership skills</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Teaches how to lose gracefully and learn from it</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12 L10 18 L20 6"/></svg> Builds friendships and a sense of community</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLAYERS ================= -->
+<section style="background:var(--linen);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Names worth knowing</span>
+      <h2>A few celebrated Indian athletes</h2>
+      <p>Each of these athletes gave India a distinct identity on the world stage, in their own sport.</p>
+    </div>
+    <div class="player-grid">
+      <div class="player-card">
+        <span class="tag">Cricket</span>
+        <h4>Sachin Tendulkar</h4>
+        <p>The first and, so far, only batter to score 100 international centuries. Often referred to as "the God of Cricket."</p>
+      </div>
+      <div class="player-card">
+        <span class="tag">Hockey</span>
+        <h4>Major Dhyan Chand</h4>
+        <p>A three-time Olympic gold medallist whose stick-work is still held up as a benchmark in the sport.</p>
+      </div>
+      <div class="player-card">
+        <span class="tag">Badminton</span>
+        <h4>P. V. Sindhu</h4>
+        <p>The first Indian woman to win two consecutive Olympic medals — a silver and a bronze.</p>
+      </div>
+      <div class="player-card">
+        <span class="tag">Athletics</span>
+        <h4>Neeraj Chopra</h4>
+        <p>Won gold in the javelin throw at the 2020 Tokyo Olympics, India's first-ever Olympic gold in athletics.</p>
+      </div>
+      <div class="player-card">
+        <span class="tag">Athletics</span>
+        <h4>Milkha Singh</h4>
+        <p>Known as "The Flying Sikh," he won gold at the 1958 and 1962 Asian Games and inspired a generation of Indian runners.</p>
+      </div>
+      <div class="player-card">
+        <span class="tag">Boxing</span>
+        <h4>M. C. Mary Kom</h4>
+        <p>A six-time world boxing champion and Olympic bronze medallist who gave women's boxing new visibility in India.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FUN FACTS ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">A little detour</span>
+      <h2>Interesting facts about sport</h2>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-card"><p>A table tennis ball weighs just 2.7 grams, yet it can travel at speeds over 100 km/h.</p></div>
+      <div class="fact-card"><p>The marathon's exact distance (42.195 km) was extended at the 1908 London Olympics so the race would finish in front of the royal family.</p></div>
+      <div class="fact-card"><p>A badminton shuttlecock is traditionally made from 16 feathers, usually from a duck or goose.</p></div>
+      <div class="fact-card"><p>Chess is considered as much a mental workout as a game, and its traditions are counted among the oldest in organised play.</p></div>
+      <div class="fact-card"><p>A football player covers an average of 9 to 12 kilometres over the course of a single match.</p></div>
+      <div class="fact-card"><p>The word "kabaddi" is believed to come from the Tamil phrase "kai-pidi," meaning "to hold hands."</p></div>
+      <div class="fact-card"><p>The five Olympic rings are blue, yellow, black, green, and red — a combination chosen so that every national flag in the world contains at least one of those colours.</p></div>
+      <div class="fact-card"><p>Swimming activates more than 600 muscles in the body at once.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GLOSSARY ================= -->
+<section style="background:var(--linen);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Know the terms</span>
+      <h2>A short glossary of sports terms</h2>
+    </div>
+    <dl class="glossary">
+      <div class="g-item"><dt>Foul</dt><dd>A violation of the rules, for which the referee can award a penalty or other sanction.</dd></div>
+      <div class="g-item"><dt>Tiebreaker</dt><dd>A special method used to decide a winner when the score is level.</dd></div>
+      <div class="g-item"><dt>Referee / Umpire</dt><dd>The official responsible for enforcing the rules during a match.</dd></div>
+      <div class="g-item"><dt>Substitute</dt><dd>A player who comes on to replace another player during a match.</dd></div>
+      <div class="g-item"><dt>Final</dt><dd>The last and decisive match of a tournament.</dd></div>
+      <div class="g-item"><dt>Wild card entry</dt><dd>A place in a tournament granted by special permission, without going through normal qualification.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">The World of Sport</span>
+    <span>This page was built purely for general information.</span>
+  </div>
+</footer>
+
+</body>
+</html>
